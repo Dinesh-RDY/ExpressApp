@@ -1,0 +1,32 @@
+<% layout('/layouts/body') %>
+    <div class="row mb-3">
+        <div class="col-6 offset-3">
+            <h1>Details about <%= campgrounds.title %>
+            </h1>
+
+            <img src="<%=campgrounds.image%>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">
+                    title: <%= campgrounds.title %>
+                </h5>
+                <p class="card-text">
+                    description : <%= campgrounds.description %>
+                </p>
+
+                <p class="card-text">
+                    Price: <%= campgrounds.price %>
+                </p>
+
+                <p class="card-text">
+                    location : <%= campgrounds.location %>
+                </p>
+            </div>
+            <a href="/campgrounds/<%= campgrounds.id%>/edits" class="card-link btn btn-primary">edit</a>
+            <a href="/campgrounds" class="card-link btn border border-dark mt-1 btn-info">back</a>
+            <form class="d-inline" action="/campgrounds/<%= campgrounds.id %>?_method=DELETE" method="post">
+                <button type="submit" class="card-link btn btn-danger">
+                    delete
+                </button>
+            </form>
+        </div>
+    </div>
