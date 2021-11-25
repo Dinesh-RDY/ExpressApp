@@ -99,6 +99,12 @@ const Joi = require("joi");
  * We will put this Joi into a middleware and use it
  */
 const validator = require("./schemas");
+/**
+ * Validate is a functin that validates the data 
+ * @param {*} req This is the request 
+ * @param {*} res this is the response
+ * @param {*} next this is the error handling keyword calling next() should be done 
+ */
 const validate = (req, res, next) => {
 
     const { error } = validator.validate(req.body);
