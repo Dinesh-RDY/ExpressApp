@@ -7,14 +7,21 @@ const Campground = require("./models/Campground");
 /**
  * Now we will set up our mongoose data base and then connect it to our app
  */
-const mongoose = require("mongoose");
+/* const mongoose = require("mongoose");
 mongoose.connect('mongodb://localhost:27017/yelp-camp');
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection Error"));
 db.once("open", () => {
     console.log("Connection established");
-});
+}); */
 
+const mongoose = require("mongoose");
+mongoose.connect('mongodb://localhost:27017/yelp-camp')
+    .then(() => {
+        console.log("Database Connected");
+    }).catch(() => {
+        console.log("There was some error !");
+    })
 /**========================================================================== */
 /*This is we creating oue express app*/
 const express = require("express");
@@ -94,7 +101,7 @@ app.get("/campgrounds/:id/edits", handle(async (req, res) => {
 /**
  * This is the route to make the new campground !!
  */
-const Joi = require("joi");
+// const Joi = require("joi");
 /**
  * We will put this Joi into a middleware and use it
  */
@@ -108,7 +115,7 @@ const validator = require("./schemas");
 const validate = (req, res, next) => {
 
     const { error } = validator.validate(req.body);
-    console.log("Error")
+    //console.log("Error")
     if (error) {
         const msg = error.details.map(ele => { return ele.message }).join();
         throw new err(msg, 400)
