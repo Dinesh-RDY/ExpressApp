@@ -154,7 +154,6 @@ app.delete("/campgrounds/:id", handle(async (req, res) => {
  * If there is an error we will hit this route;
  */
 app.all("*", (req, res, next) => {
-    console.log("Hello");
     next(new err("Page not found ", 404));
 })
 
